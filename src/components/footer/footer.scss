@@ -1,0 +1,18 @@
+.footer {
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &.light {
+    background: #f9f9f9;
+    color: #111;
+    border-top: 1px solid #ddd;
+  }
+
+  &.dark {
+    background: #111;
+    color: #eee;
+    border-top: 1px solid #333;
+  }
+}
