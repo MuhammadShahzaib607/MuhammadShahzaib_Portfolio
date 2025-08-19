@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./home.scss";
 import { TypeAnimation } from "react-type-animation";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +6,41 @@ import Services from "../../components/services/Services";
 
 const Home = ({ darkMode }) => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [password, setPassword] = useState("");
+
+  // Detect Shift + A + D
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.shiftKey && e.key.toLowerCase() === "a") {
+        window.addEventListener("keydown", secondKey);
+      }
+    };
+
+    const secondKey = (e) => {
+      if (e.key.toLowerCase() === "d") {
+        setShowModal(true);
+        window.removeEventListener("keydown", secondKey);
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("keydown", secondKey);
+    };
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === "shahzaib607") {
+      localStorage.setItem("isAdmin", true)
+      setShowModal(false);
+    } else {
+            setShowModal(false);
+    }
+    setPassword("");
+  };
 
   return (
     <div className={`home ${darkMode ? "dark" : "light"}`}>
@@ -44,27 +79,27 @@ const Home = ({ darkMode }) => {
       <section className="skills">
         <h2>My Skills</h2>
         <div className="skillsList">
-          <Skill name="HTML" level="95" color="#e34c26" />
-          <Skill name="CSS" level="90" color="#264de4" />
-          <Skill name="JavaScript" level="85" color="#f7df1e" />
-          <Skill name="React" level="85" color="#61dafb" />
-          <Skill name="Node.js" level="80" color="#68a063" />
-          <Skill name="Express.js" level="70" color="#888" />
-          <Skill name="MongoDB" level="80" color="#4db33d" />
-          <Skill name="React Native" level="10" color="#61dafb" />
-          <Skill name="Material UI" level="50" color="#0081cb" />
-          <Skill name="Tailwind CSS" level="80" color="#38bdf8" />
-          <Skill name="AI Integration" level="50" color="#ff9800" />
-          <Skill name="GSAP" level="50" color="#88ce02" />
-          <Skill name="Firebase" level="40" color="#ffca28" />
-          <Skill name="GitHub" level="80" color="#333" />
-          <Skill name="Vercel" level="70" color="#000" />
-          <Skill name="Postman" level="75" color="#ef5b25" />
-          <Skill name="Backend Advanced" level="60" color="#6c63ff" />
-          <Skill name="Rate Limiting" level="85" color="#00bcd4" />
-          <Skill name="Helmet" level="80" color="#607d8b" />
-          <Skill name="Mongo Sanitize" level="80" color="#43a047" />
-          <Skill name="CORS" level="90" color="#9c27b0" />
+          <Skill name="HTML" level="95" />
+          <Skill name="CSS" level="90" />
+          <Skill name="JavaScript" level="85" />
+          <Skill name="React" level="85" />
+          <Skill name="Node.js" level="80" />
+          <Skill name="Express.js" level="70" />
+          <Skill name="MongoDB" level="80" />
+          <Skill name="React Native" level="10" />
+          <Skill name="Material UI" level="50" />
+          <Skill name="Tailwind CSS" level="80" />
+          <Skill name="AI Integration" level="50" />
+          <Skill name="GSAP" level="50" />
+          <Skill name="Firebase" level="40" />
+          <Skill name="GitHub" level="80" />
+          <Skill name="Vercel" level="70" />
+          <Skill name="Postman" level="75" />
+          <Skill name="Backend Advanced" level="60" />
+          <Skill name="Rate Limiting" level="85" />
+          <Skill name="Helmet" level="80" />
+          <Skill name="Mongo Sanitize" level="80" />
+          <Skill name="CORS" level="90" />
         </div>
       </section>
 
@@ -101,24 +136,46 @@ const Home = ({ darkMode }) => {
         </div>
 
         <button className="viewMore" onClick={() => navigate("/projects")}>
-         <Link to="/projects">View More ....</Link>
+          <Link to="/projects">View More ....</Link>
         </button>
       </section>
 
-<Services darkMode={darkMode} />
+      <Services darkMode={darkMode} />
 
+      {/* Secret Admin Modal */}
+      {showModal && (
+        <div className="modalOverlay">
+          <div className="modalContent">
+            <button className="closeBtn" onClick={() => setShowModal(false)}>
+              ✖
+            </button>
+            <h2>🔒 Admin Access</h2>
+            <p>Enter the secret password to unlock admin mode.</p>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="submit" className="btnLogin">Login</button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 // Reusable Skill Bar Component
-const Skill = ({ name, level, color }) => {
+const Skill = ({ name, level }) => {
   return (
     <div className="skill">
       <div className="skillHeader">
         <span>{name}</span>
       </div>
-      <div className="bar" style={{marginTop: "7px"}}>
+      <div className="bar" style={{ marginTop: "7px" }}>
         <div
           className="fill"
           style={{ width: `${level}%`, backgroundColor: "royalblue" }}
@@ -127,7 +184,5 @@ const Skill = ({ name, level, color }) => {
     </div>
   );
 };
-
-
 
 export default Home;
