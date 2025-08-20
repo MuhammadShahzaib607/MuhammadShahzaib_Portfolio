@@ -87,6 +87,25 @@
       border-color: royalblue;
     }
 
+    .loader {
+      background-color: transparent;
+      border: 3px solid #121212;
+  border-top: 3px solid royalblue;
+  border-right: 3px solid royalblue;
+      height: 30px;
+      width: 30px;
+      align-self: center;
+      border-radius: 50%;
+      animation: spinner 1s infinite linear;
+      margin-top: 8px;
+    }
+
+    @keyframes spinner {
+100% {
+transform: rotate(360deg);
+}
+    }
+
     .btn {
       padding: 12px;
       border: none;

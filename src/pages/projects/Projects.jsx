@@ -17,13 +17,6 @@ const projectsData = [
     isLinkAvailable: true,
   },
   {
-    title: "Furniture E-commerce Website",
-    desc: "Built a responsive furniture e-commerce platform with a homepage for recent products, a shop page for all items, a cart and secure checkout system, plus an about page. Included a hidden admin panel for adding products and managing customer orders.",
-    codeLink: "https://github.com/muhammadshahzaib607/smartFriendFurniture/",
-    liveLink: "https://smart-friend-furniture.vercel.app/",
-    isLinkAvailable: true,
-  },
-  {
     title: "Fintracker – Accounting Web App",
     desc: "Developed a financial tracking application with React.js, Node.js, Express.js, and MongoDB. The app features secure authentication for signup, login, and logout, and enables users to manage income and expense records with create, edit, and delete functionality. Implemented role-based access control to protect private routes and ensure secure data handling.",
     codeLink: "https://github.com/muhammadshahzaib607/FinTracker/",

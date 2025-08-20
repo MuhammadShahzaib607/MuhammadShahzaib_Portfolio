@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./contact.scss";
 
 const Contact = ({ darkMode }) => {
+    const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -17,6 +18,7 @@ const Contact = ({ darkMode }) => {
         e.preventDefault();
 
         try {
+            setIsLoading(true)
             const res = await fetch("https://fin-tracker-five-virid.vercel.app/contact/", {
                 method: "POST",
                 headers: {
@@ -30,11 +32,14 @@ const Contact = ({ darkMode }) => {
             if (res.ok) {
                 setAlert("✅ Message Sent Successfully!");
                 setFormData({ name: "", email: "", message: "" });
+                setIsLoading(false)
             } else {
                 setAlert("❌ Failed to send message: " + data.msg);
+                                setIsLoading(false)
             }
         } catch (error) {
             setAlert("❌ Something went wrong!");
+                            setIsLoading(false)
         }
 
         // Auto hide after 3s
@@ -83,7 +88,11 @@ const Contact = ({ darkMode }) => {
                         autoComplete="off"
                         required
                     ></textarea>
-                    <button type="submit" className="btn">Send Message</button>
+                    {
+                        isLoading ?
+                        <div className="loader"></div> :
+                        <button type="submit" className="btn">Send Message</button>
+                    }
                 </form>
             </div>
         </section>
