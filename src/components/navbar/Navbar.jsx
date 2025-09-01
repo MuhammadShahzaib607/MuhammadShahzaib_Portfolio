@@ -51,7 +51,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             <Link to="/messages">
             <li>Messages</li>
             </Link> :
-            <Link>
+            <Link to="/contact">
             <li>Contact</li>
             </Link>
           }

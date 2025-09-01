@@ -36,6 +36,7 @@ const Home = ({ darkMode }) => {
     if (password === "shahzaib607") {
       localStorage.setItem("isAdmin", true)
       setShowModal(false);
+      window.location.reload()
     } else {
             setShowModal(false);
     }
@@ -79,27 +80,23 @@ const Home = ({ darkMode }) => {
       <section className="skills">
         <h2>My Skills</h2>
         <div className="skillsList">
-          <Skill name="HTML" level="95" />
-          <Skill name="CSS" level="90" />
-          <Skill name="JavaScript" level="85" />
-          <Skill name="React" level="85" />
-          <Skill name="Node.js" level="80" />
-          <Skill name="Express.js" level="70" />
-          <Skill name="MongoDB" level="80" />
-          <Skill name="React Native" level="10" />
-          <Skill name="Material UI" level="50" />
-          <Skill name="Tailwind CSS" level="80" />
-          <Skill name="AI Integration" level="50" />
-          <Skill name="GSAP" level="50" />
-          <Skill name="Firebase" level="40" />
-          <Skill name="GitHub" level="80" />
-          <Skill name="Vercel" level="70" />
-          <Skill name="Postman" level="75" />
-          <Skill name="Backend Advanced" level="60" />
-          <Skill name="Rate Limiting" level="85" />
-          <Skill name="Helmet" level="80" />
-          <Skill name="Mongo Sanitize" level="80" />
-          <Skill name="CORS" level="90" />
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>HTML</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>CSS</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>JavaScript</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>React.js</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Node.js</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Express.js</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>MongoDB</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>React Native (Basic)</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>SCSS</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Material UI</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Tailwind CSS</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>AI Integration</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>GSAP</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Firebase</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Github</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Vercel</div>
+          <div className={`skillCard ${darkMode ? "dark" : "light"}`}>Postman</div>
         </div>
       </section>
 
@@ -168,21 +165,5 @@ const Home = ({ darkMode }) => {
   );
 };
 
-// Reusable Skill Bar Component
-const Skill = ({ name, level }) => {
-  return (
-    <div className="skill">
-      <div className="skillHeader">
-        <span>{name}</span>
-      </div>
-      <div className="bar" style={{ marginTop: "7px" }}>
-        <div
-          className="fill"
-          style={{ width: `${level}%`, backgroundColor: "royalblue" }}
-        ></div>
-      </div>
-    </div>
-  );
-};
 
 export default Home;
