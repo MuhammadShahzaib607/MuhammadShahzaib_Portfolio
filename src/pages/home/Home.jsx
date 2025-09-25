@@ -66,6 +66,9 @@ const Home = ({ darkMode }) => {
             repeat={Infinity}
             className="typing"
           />
+          <a href="/resume.pdf" download>
+            <button className="cvBtn">Download CV</button>
+          </a>
         </div>
 
         <div className="heroRight">
