@@ -4,6 +4,13 @@ import "./projects.scss";
 const projectsData = [
   {
     title: "Makeup E-commerce Website",
+    desc: "Developed a responsive blog website where users can create and read unlimited blogs, with a clean and minimal UI for smooth reading experience.",
+    codeLink: "https://github.com/MuhammadShahzaib607/Blog-App",
+    liveLink: "https://shahzaib-blog-app.vercel.app/",
+    isLinkAvailable: true,
+  },
+  {
+    title: "Makeup E-commerce Website",
     desc: "Developed a responsive e-commerce website for cosmetics with product listings, filtering, cart, checkout, and admin dashboard for product management. Integrated secure payment flow and responsive UI for seamless shopping.",
     codeLink: "https://github.com/muhammadshahzaib607/makeup_website/",
     liveLink: "https://as-cosmo.vercel.app",
