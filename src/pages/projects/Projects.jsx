@@ -3,7 +3,7 @@ import "./projects.scss";
 
 const projectsData = [
   {
-    title: "Makeup E-commerce Website",
+    title: "Blog App",
     desc: "Developed a responsive blog website where users can create and read unlimited blogs, with a clean and minimal UI for smooth reading experience.",
     codeLink: "https://github.com/MuhammadShahzaib607/Blog-App",
     liveLink: "https://shahzaib-blog-app.vercel.app/",
